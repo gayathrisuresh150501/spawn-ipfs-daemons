@@ -7,7 +7,7 @@ import (
 	"strconv"
 )
 
-func FindOpenPort() int {
+func FindOpenPort() int, err {
 	listener, err := net.Listen("tcp", ":0")
 	if err != nil {
 		panic(err)
