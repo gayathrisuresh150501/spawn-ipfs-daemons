@@ -56,7 +56,7 @@ func CreateNewInstance(instanceCount int) {
 	}
 
 	for i := 1; i < instanceCount; i++ {
-		instName := ".ipfs" + strconv.Itoa(i)
+		instName := RootConfigDir + strconv.Itoa(i)
 		_, ok := InstWithPaths[instName]
 		if !ok {
 			err1 := os.Mkdir(instName, 0755)
