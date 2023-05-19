@@ -33,6 +33,7 @@ func main() {
 	// var termSig string
 	// spawndaemons.ExecCmd("ipfs", "shutdown")
 	bufio.NewReader(os.Stdin).ReadBytes('\n')
+	//use scanf
 
 	// spawndaemons.ReqDaemonInst()
 	// spawndaemons.ExecCmd("ipfs", "daemon")
