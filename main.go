@@ -3,30 +3,30 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"ipfs-n-daemon-pkg/spawndaemons"
+	"ipfs-n-daemon-pkg/daemon"
 	"os"
 	"sync"
 )
 
 func main() {
-	nodeCount := spawndaemons.ReqDaemonInst()
-	spawndaemons.CreateNewInstance(nodeCount)
+	nodeCount := daemon.ReqDaemonInst()
+	daemon.CreateNewInstance(nodeCount)
 
 	var wg sync.WaitGroup
 
-	for _, path := range spawndaemons.InstWithPaths {
+	for _, path := range daemon.InstWithPaths {
 		wg.Add(1)
 		// fmt.Println("IPFS PATH :", "C:"+path)
-		if err := spawndaemons.SetPath("C:" + path); err != nil {
+		if err := daemon.SetPath("C:" + path); err != nil {
 			fmt.Println("SetPath Err:", err)
 		}
-		spawndaemons.ExecuteCommand(&wg)
+		daemon.ExecuteCommand(&wg)
 	}
 
 	wg.Wait()
 
 	fmt.Println("Press ctrl + c to exit.")
-	spawndaemons.ShutDaemon(spawndaemons.InstWithPaths)
+	// spawndaemons.ShutDaemon(spawndaemons.InstWithPaths)
 
 	//use keyboard package
 

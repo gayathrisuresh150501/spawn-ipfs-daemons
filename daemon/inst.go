@@ -1,4 +1,4 @@
-package spawndaemons
+package daemon
 
 import (
 	"fmt"
@@ -61,7 +61,7 @@ func CreateNewInstance(instanceCount int) {
 		if !ok {
 			err1 := os.Mkdir(instName, 0755)
 			if err1 != nil {
-				fmt.Println("Error creating instances", err1)
+				fmt.Println(err1)
 			}
 			setIPFSPath := DefaultPath + instName
 			InstWithPaths[instName] = setIPFSPath
@@ -76,12 +76,12 @@ func CreateNewInstance(instanceCount int) {
 
 }
 
-func ShutDaemon(InstanceWithPaths map[string]string) {
-	for _, path := range InstanceWithPaths {
-		err := os.Chdir(path)
-		if err != nil {
-			fmt.Println("Unable to shutdown daemon: ", err)
-		}
-		ExecCmd("ipfs", "shutdown")
-	}
-}
+// func ShutDaemon(InstanceWithPaths map[string]string) {
+// 	for _, path := range InstanceWithPaths {
+// 		err := os.Chdir(path)
+// 		if err != nil {
+// 			fmt.Println("Unable to shutdown daemon: ", err)
+// 		}
+// 		ExecCmd("ipfs", "shutdown")
+// 	}
+// }

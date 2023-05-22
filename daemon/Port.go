@@ -1,4 +1,4 @@
-package spawndaemons
+package daemon
 
 import (
 	"fmt"
